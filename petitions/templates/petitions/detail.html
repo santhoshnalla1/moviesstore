@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>{{ petition.title }}</h1>
+    <p>{{ petition.description|linebreaks }}</p>
+    <p>Score: {{ petition.score }} - Up: {{ petition.upvotes }} - Down: {{ petition.downvotes }} </p>
+    <p>
+        <a href="{% url 'petitions:vote' petition.pk 'up' %}">Upvote</a>
+        |
+        <a href="{% url 'petitions:vote' petition.pk 'down' %}">Downvote</a>
+    </p>
+
+    <p><a href="{% url 'petitions:list' %}">Back to petitions</a> </p>
+{% endblock %}

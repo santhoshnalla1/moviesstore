@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Petitions</h1>
+    <p><a href="{% url 'petitions:create' %}">Create a new Petition</a></p>
+    <ul>
+        {% for p in petitions %}
+        <li>
+            <a href="{% url 'petitions:detail' p.pk %}">{{ p.title }}</a>
+            -Score: {{ p.score }} - Up: {{ p.upvotes }} - Down: {{ p.downvotes }}
+        </li>
+        {% empty %}
+        <li>
+            No petitions yet.
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
